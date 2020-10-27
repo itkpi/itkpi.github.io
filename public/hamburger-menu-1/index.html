@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="C# &#43; XAML = Hamburger Menu. Part 1" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/hamburger-menu-1/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-02-09
+" /> <meta property="article:modified_time" content="2016-02-09
+" />
+
+
+
+
+
+
+    <title>C# &#43; XAML = Hamburger Menu. Part 1</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/hamburger-menu-1/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">C# &#43; XAML = Hamburger Menu. Part 1</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-02-09">February 9, 2016</time>
+                <span class="author">by <a href="mailto:maksim36ua@gmail.com">Maksym Khamrovskyi</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/02/1455040006_9be46c66a8c141c6a677192a0e547db8.gif" class="post-image full-img">
+</div>
+<blockquote>
+<p>Іконка гамбургера — це класика. Навіть якщо ви не знаєте її під цим ім&rsquo;ям, то три чорні смуги настільки ж знайомі, як курсор миші — постійний супутник нашого інтернет-серфінгу з того дня, як ви отримали комп&rsquo;ютер.</p>
+</blockquote>
+<p><a href="http://gizmodo.com/who-designed-the-iconic-hamburger-icon-1555438787">Gizmodo</a></p>
+<p>Кнопка &ldquo;Hamburger&rdquo; зустрічається майже усюди. Від Android-додатків до мобільних версій знаменитих сайтів. Хтось зве її антипатерном UI, хтось боготворить за зручність і зрозумілість.</p>
+<p>Так чи інакше, кнопка з трьома горизонтальними рисками у нашому житті надовго. І сьогодні ми навчимось готувати гамбургер самостійно.</p>
+<p>Ключові інгредієнти страви:</p>
+<ul>
+<li><a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Visual Studio 2015 Community</a></li>
+<li>Багато терпіння, щоб подужати статтю</li>
+<li><a href="https://vk.com/wall-88116812_364">Книга по розробці під Windows 10 від Маргарити Остапчук і Сергія Байдачного</a></li>
+<li>Трохи розуміння C# (опціонально)</li>
+<li>Трохи розуміння XAML (опціонально)</li>
+</ul>
+<p>Дві ремарки перед тим, як почнемо:</p>
+<ul>
+<li>в деяких місцях форматування коду поїхало, бо не влізає по ширині. При копіюванні у Visual Studio все красиво, тому feel free to use Ctrl+C and Ctrl+V</li>
+<li>текст, що виділений як цитата, надає додаткову інформацію. Його можна не читати.</li>
+</ul>
+<p>Отже, поїхали.</p>
+<p>Велика подорож починається з першого кроку, а написання крутого додатку  — зі створення проекту.
+Обираємо  Blank App і тиснемо «Ok».</p>
+<p><img src="/images/2016/02/1455039768_79c6308620ea497abebe6cb5df1ec387.jpg" alt=""></p>
+<p>Оберіть дві картинки на свій смак і перетягніть їх в папку Assets. Згодом ми будемо міняти їх місцями, перемикаючи пункти нашого «Hamburger» меню.</p>
+<p><img src="/images/2016/02/1455039807_7bd702b00f084470b3b1952703658d29.jpg" alt=""></p>
+<p>Картинки помістимо на окремі XAML-сторінки і будемо переключати їх всередині фрейму. Про це в деталях трохи згодом, зараз просто додаємо дві порожні сторінки в проект.  Натискаємо правою кнопкою миші на назві проекту, <code>Add  =&gt; New Item</code>. Обираємо Blank Page, задаємо ім’я і клацаємо «Ок»</p>
+<p><img src="/images/2016/02/1455040109_8627e6d3c2b144268f4c943d2704b1b2.jpg" alt=""></p>
+<p><img src="/images/2016/02/1455040109_63d9b232ef5b43f3b6ec228efe868e8a.jpg" alt=""></p>
+<p>В HTML сторінка складається з двох частин. Тег <head> містить атрибути, які допомагають браузеру коректно відображати вміст. В той же час <body> зберігає сам контент, який необхідно показати.</p>
+<p>Якщо провести аналогію, то XAML-сторінку можна умовно розбити на частину з оголошенням просторів імен і, власне, контентом. Вгорі сторінки міститься стовпець xmlns–тегів, що вказують на різні схеми. Якщо спростит — в цих схемах міститься інформація про елементи керування (controls), їх властивості, правила створення об’єктів з XAML-коду і все-все-все. Ці штуки краще не займати, а якщо дуже хочеться хоч трохи зрозуміти їх призначення — можна почитати <a href="https://msdn.microsoft.com/ru-ru/library/ff633576(v=vs.110).aspx">тут</a> або <a href="https://vk.com/wall-88116812_364">в книзі</a> Маргарити Остапчук і Сергія Байдачного про розробку під Windows 10 тут (сторінка 27).</p>
+<p>Нижче під просторами імен побачите елемент керування <code>&lt;Grid&gt;</code>. Він розбиває видимий простір на сітку з рядків і стовпців. Додаємо зображення до <code>&lt;Grid&gt;</code> на сторінках IT_KPI.xaml та MS_KPI.xaml.</p>
+<p>Для цього використовується тег <code>&lt;Image&gt;</code>. Атрибут Source вказує шлях до картинки, а VerticalAlignment прив&rsquo;язує зображення до верху сторінки.</p>
+<p>Додаємо наступний код всередину тега <code>&lt;Grid&gt;</code>:</p>
+<pre><code>&lt;Image Source=&quot;Assets/НАЗВА_ЗОБРАЖЕННЯ.jpg&quot; VerticalAlignment=&quot;Top&quot; /&gt;
+</code></pre>
+<p>В результаті маємо:</p>
+<pre><code>&lt;Grid Background=&quot;{ThemeResource ApplicationPageBackgroundThemeBrush}&quot;&gt;
+  &lt;Image Source=&quot;Assets/1.jpg&quot; VerticalAlignment=&quot;Top&quot; /&gt;
+&lt;/Grid&gt;
+</code></pre>
+<p>Ще один важливий момент: за замовчуванням у нашому додатку буде висвічуватись лічильник FPS.</p>
+<p><img src="/images/2016/02/1455041094_6f048a648e06497a8633b7516766b556.png" alt=""></p>
+<p>Часто дуже корисна штука, але не вписується в наш космічний дизайн. Щоб позбутись від нього мусимо перейти в App.xaml.cs і видалити наступний шматок коду.</p>
+<p><img src="/images/2016/02/1455041128_dd63abcbf6c74048ba4c7a4e0fb44275.jpg" alt=""></p>
+<p>Підготовчий етап завершено, приступаємо до найцікавішого. Йдемо в MainPage.xaml і розбиваємо сторінку на дві стрічки. Як вже згадували, для цього служить <code>&lt;Grid&gt;</code>. Кількість рядків і стовпців задається властивостями (property) під назвою <code>&lt;Grid.RowDefinitions&gt;</code> та <code>&lt;Grid.ColumnDefinitions&gt;</code>. Ми хочемо розбити сторінку на два горизонтальні рядки, тому додаємо відповідні теги.</p>
+<p>Маємо наступний код:</p>
+<pre><code>&lt;Grid Background=&quot;{ThemeResource ApplicationPageBackgroundThemeBrush}&quot;&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+        &lt;RowDefinition Height=&quot;*&quot;/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+&lt;/Grid&gt;
+</code></pre>
+<blockquote>
+<p><code>Height=&quot;Auto&quot;</code> говорить про те, що висота елементу буде визначатись висотою його вмісту. Якщо всередину першого рядка помістити кнопку з властивістю <code>Height=&quot;50&quot;</code>, то висота рядка також буде 50 пікселів.</p>
+</blockquote>
+<blockquote>
+<p><code>Height=&quot;*&quot;</code> говорить рядку: «Займи весь вільний простір, який знайдеш». Певно, схожа команда є всередині браузера Google Chrome і стосується оперативної пам&rsquo;яті.</p>
+</blockquote>
+<p>Нижче додамо <code>&lt;RelativePanel&gt;</code>, яка зберігатиме кнопку гамбургера, кнопку «Назад» і панель пошуку.</p>
+<blockquote>
+<p><code>&lt;RelativePanel&gt;</code> — це контейнер для взаємного позиціонування елементів керування один відносно одного. Застосовуючи прикріплені властивості (attached properties) можна розташувати один елемент відносно іншого, або приліпити елемент до самої панелі. Детальніше <a href="https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.relativepanel.aspx#attachedmembers">тут</a>.</p>
+</blockquote>
+<p>Ще нижче додамо <code>&lt;SplitView&gt;</code>, в якому буде знаходитись саме тіло меню. Нащо він треба і як працює буде описано, коли до нього дійде черга. Зараз просто допишемо його під <code>&lt;RelativePanel&gt;</code> і заб’ємо.</p>
+<p>На даному етапі код виглядає так:</p>
+<pre><code>&lt;Grid Background=&quot;{ThemeResource ApplicationPageBackgroundThemeBrush}&quot;&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+        &lt;RowDefinition Height=&quot;*&quot; /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;RelativePanel&gt;
+    &lt;/RelativePanel&gt;
+
+    &lt;SplitView&gt;
+    &lt;/SplitView&gt;
+&lt;/Grid&gt;
+</code></pre>
+<p>Всередину <code>&lt;RelativePanel&gt;</code> додаємо головну кнопку з трьома горизонтальними рисками, на честь якої і назвали дизайн меню. Також покладемо туди кнопку «Назад», текстовий блок з назвою сторінки і панель пошуку, роль якої буде виконувати поле та кнопка.</p>
+<p>Код <code>&lt;RelativePanel&gt;</code>.  Також необхідно дати імена усім нашим елементам.</p>
+<pre><code>&lt;RelativePanel&gt;
+   &lt;Button Name=&quot;HamburgerButton&quot; /&gt;     
+   &lt;Button Name=&quot;BackButton&quot;/&gt;          
+   &lt;TextBlock Name=&quot;TitleTextBlock&quot;/&gt;    
+   &lt;TextBox Name=&quot;SearchTextBox&quot;/&gt;       
+   &lt;Button Name=&quot;SearchButton&quot; /&gt;             
+&lt;/RelativePanel&gt;
+</code></pre>
+<p>Як було сказано, <code>&lt;RelativePanel&gt;</code> служить для відносного позиціонування своїх дочірніх елементів. «Гамбургер» знаходиться зліва. Кнопка «Назад» буде знаходитись праворуч від «Гамбургера». Назва сторінки — праворуч від «Назад», меню пошуку потрібно розмістити справа відносно панелі. Для цього задаємо відповідні властивості.</p>
+<p>Тепер код має наступний вигляд:</p>
+<pre><code>&lt;RelativePanel&gt;
+        &lt;Button Name=&quot;HamburgerButton&quot; 
+                RelativePanel.AlignLeftWithPanel=&quot;True&quot;/&gt;    
+     
+        &lt;Button Name=&quot;BackButton&quot;
+                RelativePanel.RightOf=&quot;HamburgerButton&quot;/&gt;  
+      
+        &lt;TextBlock Name=&quot;TitleTextBlock&quot;
+                   RelativePanel.RightOf=&quot;BackButton&quot;/&gt;      
+
+        &lt;TextBox Name=&quot;SearchTextBox&quot; 
+                 RelativePanel.LeftOf=&quot;SearchButton&quot;/&gt;
+
+        &lt;Button Name=&quot;SearchButton&quot; 
+                RelativePanel.AlignRightWithPanel=&quot;True&quot;/&gt;
+&lt;/RelativePanel&gt;
+</code></pre>
+<p>Властивості можна переміщати на наступну стрічку для покращення читабельності. Синтаксис це дозволяє.</p>
+<p>Тепер головне — призначаємо знамениту іконку «Hamburger». Для відображення трьох горизонтальних рисок на кнопці використовується спеціальний шрифт, що зветься <code>«Segoe MDL2 Assets»</code>. Символи цього шрифту можна знайти у всіх сучасних програмах Microsoft і не тільки.</p>
+<p>Щоб глянути всі доступні символи та їх коди достатньо запустити програму «Таблиця символів» (Character map). Вона стандартна, застосуйте пошук по комп&rsquo;ютеру.</p>
+<p><img src="/images/2016/02/1455043471_2d910e164854485c8fc7911e2bdaeb9b.jpg" alt=""></p>
+<p>Нас же цікавить код кнопки «Меню», «Назад» та «Пошук»</p>
+<p><img src="/images/2016/02/1455043501_78dabe0ffdd24b0584d9a326f2a61016.jpg" alt=""></p>
+<p>Для присвоєння символу кнопці пишемо наступні властивості:</p>
+<pre><code>FontFamily=&quot;Segoe MDL2 Assets&quot;
+Content=&quot;&amp;#xCODE;&quot;
+</code></pre>
+<p>Де <code>CODE</code> – код кнопки. Для менюхи, «назад» і «пошук» коди <code>E700</code>, <code>E0C4</code> та <code>E1A3</code> відповідно.</p>
+<p>Розмір шрифту задається властивістю FontSize. Ставимо його рівним 36.</p>
+<pre><code>FontSize=&quot;36&quot;
+</code></pre>
+<p>Також для кожної кнопки додаємо обробник події, що реагує на натискання. Коли користувач тикне на кнопку ми хочемо, щоб відбувались певні дії. Ці дії і будуть визначатись обробником Click.</p>
+<p>Вставляємо в кнопки «Меню» і «Назад» властивість</p>
+<pre><code>Click=&quot;НАЗВА_КНОПКИ_Click&quot;
+</code></pre>
+<p>Для кнопки пошуку обробник не потрібен, в нас же нічого шукати.</p>
+<p>Вміст <code>&lt;RelavivePanel&gt;</code> виглядає так:</p>
+<pre><code> &lt;RelativePanel&gt;
+        &lt;Button Name=&quot;HamburgerButton&quot; 
+                RelativePanel.AlignLeftWithPanel=&quot;True&quot;
+                FontFamily=&quot;Segoe MDL2 Assets&quot;
+                FontSize=&quot;36&quot;
+                Content=&quot;&amp;#xE700;&quot;
+                Click=&quot;HamburgerButton_Click&quot;/&gt; 
+        
+        &lt;Button Name=&quot;BackButton&quot;
+                RelativePanel.RightOf=&quot;HamburgerButton&quot;
+                FontFamily=&quot;Segoe MDL2 Assets&quot;
+                FontSize=&quot;36&quot;
+                Content=&quot;&amp;#xE0C4;&quot;
+                Click=&quot;BackButton_Click&quot;/&gt;
+        
+        &lt;TextBlock Name=&quot;TitleTextBlock&quot;
+                   RelativePanel.RightOf=&quot;BackButton&quot;
+                   FontSize=&quot;28&quot;/&gt;``            
+             
+        &lt;TextBox Name=&quot;SearchTextBox&quot; 
+                 RelativePanel.LeftOf=&quot;SearchButton&quot;
+                 Height=&quot;48&quot; 
+                 Width=&quot;200&quot;
+                 FontSize=&quot;24&quot;
+                 PlaceholderText=&quot;Search&quot;/&gt;
+
+        &lt;Button Name=&quot;SearchButton&quot; 
+                RelativePanel.AlignRightWithPanel=&quot;True&quot;
+                FontFamily=&quot;Segoe MDL2 Assets&quot;
+                FontSize=&quot;36&quot;
+                Content=&quot;&amp;#xE1A3;&quot;/&gt;
+ &lt;/RelativePanel&gt;
+</code></pre>
+<p>Настав час підпалити проект. Тикаємо F5 і маємо наступний результат:</p>
+<p><img src="/images/2016/02/1455047535_061f37c72f984605ad4bb13e5b8cabca.jpg" alt=""></p>
+<p><a href="http://itkpi.pp.ua/hamburger-menu-2">Продовження епопеї читайте тут</a></p>
+<p>Tags: dotNet, csharp</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

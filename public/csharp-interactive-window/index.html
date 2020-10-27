@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="C# Interactive Window для експериментів і тестування API" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/csharp-interactive-window/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-01-22
+" /> <meta property="article:modified_time" content="2016-01-22
+" />
+
+
+
+
+
+
+    <title>C# Interactive Window для експериментів і тестування API</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/csharp-interactive-window/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">C# Interactive Window для експериментів і тестування API</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-01-22">January 22, 2016</time>
+                <span class="author">by <a href="mailto:it@kpi.pp.ua">itkpi</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/01/1453457008_147b6e55953a40ed9a50ac0b77c459b2.jpg" class="post-image full-img">
+</div>
+<p>Знайомтесь, <a href="https://github.com/dotnet/roslyn/wiki/Interactive-Window">C# Interactive Window</a> - оболонка для швидких експериментів з C#.</p>
+<p>За визначенням це <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a> (Read–eval–print loop), яка дозволяє швидко протестувати нове API, обчислити результати виразу або просто запустити невеликий шмат коду.</p>
+<p>Відкрити вікно з консоллю можна в один клік. Йдемо шляхом:
+<code>View &gt; Other Windows &gt; C# Interactive</code></p>
+<p><img src="/images/2016/01/1453457939_6c9180cfc047443bb7640c3058a3acd8.jpg" alt=""></p>
+<p>В результаті відкриється вікно з середовищем, де вже можна сповіщати світ про появу нового .NET-програміста.</p>
+<p><img src="/images/2016/01/1453458094_255246371d164bbab4c932e3a56ed8f6.jpg" alt=""></p>
+<p>C# Interactive Window підтримує основні фішки звичайної Console App. Окрім дебагу, звісно ж, проте розробники обіцяють додати його найближчим часом. В комплекті є IntelliSense, підсвітка синтаксису і навігація по командам. Більш детальний опис можливостей на <a href="https://github.com/dotnet/roslyn/wiki/Interactive-Window">сторінці проекту в GitHub</a>.</p>
+<p><img src="/images/2016/01/1453458641_71e5e082394a4b5eb19adcef6b8c64a8.jpg" alt="">
+<img src="/images/2016/01/1453458641_b99f7b82075043f5a9e7ea0dc85ca1fc.jpg" alt=""></p>
+<p>C# Interactive Window незамінне при навчанні. Можна взяти шматок коду з MSDN, вставити у вікно і забути про TestConsoleApp18, якими забита вся папка Projects. Ідеально для експериментів і запуску шматків коду з книги, наприклад.</p>
+<p><img src="/images/2016/01/1453458884_457c190980014ecb9e076e5e7ecc44fc.jpg" alt="">
+<img src="/images/2016/01/1453458884_0f9dbd0828634e5baecdc90166f6f72c.jpg" alt=""></p>
+<p>А навчатись дійсно весело, адже є підтримка LINQ, директив і усього синтаксичного цукру C# 6.0. От вам приклад string interpolation.</p>
+<p><img src="/images/2016/01/1453459079_64a4a91ef3f54f11a8dcf7c31b39d7fa.jpg" alt=""></p>
+<p>Дозволено підключати різні простори імен і вивчати класові бібліотеки .NET</p>
+<p><img src="/images/2016/01/1453459176_8e2d0cd43bb64a5e9f4ca55969398f62.jpg" alt=""></p>
+<p>Підтримка виключних ситуацій дуже згодиться під час навчання.</p>
+<p><img src="/images/2016/01/1453459344_c589552d530c49c18bffc7added040a9.jpg" alt=""></p>
+<p>Якщо вже дістало кожного разу створювати новий Console App для того, щоб запустити невеликий шмат коду з MSDN - C# Interactive Window для вас.</p>
+<p>Tags: dotNet, csharp</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

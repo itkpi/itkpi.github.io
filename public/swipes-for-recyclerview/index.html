@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="&#34;Записки сумасшедшего&#34;, или &#34;Знакомимся с ItemTouchHelper в Android&#34;" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/swipes-for-recyclerview/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-01-23
+" /> <meta property="article:modified_time" content="2016-01-23
+" />
+
+
+
+
+
+
+    <title>&#34;Записки сумасшедшего&#34;, или &#34;Знакомимся с ItemTouchHelper в Android&#34;</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/swipes-for-recyclerview/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">&#34;Записки сумасшедшего&#34;, или &#34;Знакомимся с ItemTouchHelper в Android&#34;</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-01-23">January 23, 2016</time>
+                <span class="author">by <a href="mailto:artem.dorosh@itkpi.pp.ua">Artyom Dorosh</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/01/1452285262_40773849f9c54505bbbb1084f8bfdc90.jpg" class="post-image full-img">
+</div>
+<p><strong>Дисклеймер</strong>: статья наполнена как технической информацией, так и простой <em>болью</em> из жизни Andoid-разработчика. Если вам нужно коротко и по существу, то смело начинайте читать с раздела “<strong>Разбор полётов</strong>”. Если же вы хотите всем сердцем посопереживать и поддержать автора, то прочтите её полностью.</p>
+<p><img src="/images/2016/01/1453580527_77710c1310f64d31b90ec2f066ea06a2.png" alt=""></p>
+<h2 id="пролог">Пролог</h2>
+<p>Хотя было весьма холодно, зимний день обещал быть не из плохих. Придя на работу, я, как всегда, заварил чай, и вот, усевшись попивать тёплый чаёк с печеньками, я был прерван тимлидом, который собирался показать мне обновленный дизайн проекта. Тут-то мне и стоило <em>заподозрить неладное</em>.</p>
+<p>На меня положили задачу переписывания адаптера для главного экрана приложения. И всё было бы хорошо, если бы он не был таким комплексным. Скриншоты самого дизайна я показать вам не могу с ясных причин, но могу вкратце описать проблематику: некоторые данные могут <em>группироваться</em> в <em>группах</em>(<code>Xzibit.jpeg</code>). Но если большее множество разработчиков знает, как это можно реализовать, то следущая задача была на порядок сложнее.</p>
+<h2 id="идея">Идея</h2>
+<p>Большинство знает о паттерне <strong>swipe-to-dismiss</strong>. Его можно встретить в двух из каждых трёх приложений(<em>прим.</em> - не игр), устрановленных на вашем планшете или смартфоне. И так, вы берете итем в адаптере, “тащите” его в правую или левую сторону, и он тащится за вашим пальцем. Исходя из направления, в котором вы потащили итем, вызывается соответствующий обработчик: удаляете, архивируете, отмечаете выполненным, вызываете диалог с действиями, и т.д.</p>
+<p>В моём же задании при свайпе вправо событие отмечается выполненным, но вот действия при свайпе влево куда сложнее. Для них нужно знать величину смещения итема от левого края, причём сам итем не двигается, а надвигается “плашка” поверх итема.</p>
+<h2 id="первые-потери-и-свет-в-конце-туннеля">Первые потери и свет в конце туннеля</h2>
+<p>Android-разработчики — существа ленивые, впрочем, как и все разработчики. Они не очень-то и любят писать сложное поведение UI вручную, когда можно найти подобную либу на <em>Android Arsenal</em>. Только тут есть одна проблема: я работаю c <code>RecyclerView</code> почти с самого его анонса, и вам советую на него переходить, если вы ещё каким-то чудом не начали его использовать.</p>
+<p>Для <code>RecyclerView</code>, ИМХО, существует всё ещё мало хороших стабильных библиотек, созданных сообществом. Лично моя некогда любимая библиотека, <a href="https://github.com/h6ah4i/android-advancedrecyclerview">Advanced RecyclerView</a>, к чертям поменяла своё API, и мне пришлось потратить пару часов своей жизни просто на миграцию на более новую версию. Таковы причуды открытого сообщества разработчиков, ага.</p>
+<p>Пересмотрев “<em>обилие</em>” подходящих решений, я убедился, что придется чуть ли не самому вешать на каждый итем свой <code>OnTouchListener</code> с нужными мне обработчиками. Но оставалась последняя надежда.</p>
+<p>Загуглив очередной раз, я наткнулся на некий <code>ItemTouchHelper</code>, который умел всё то, что я искал. И самое главное, что сам класс есть в библиотеке <code>com.android.support:recyclerview-v7</code>, которую наша любимая <em>Android Studio</em> по-умолчанию добавляет в блок зависимостей <code>build.gradle</code>, или же вы сами добавляете ее при использовании <code>RecyclerView</code>.</p>
+<h2 id="разбор-полётов">Разбор полётов</h2>
+<p>Для начала стоит заметить, что сам ItemTouchHelper практически никак не связан c реализацией адаптера. Он скорее связан с вашей реализацией <code>ViewHolder</code>-а.</p>
+<p>Для того, чтобы воспользоваться всеми достоинствами хелпера, нам нужно создать собственный <code>ItemTouchHelper.Callback</code>. Это интерфейс, позволяющий приложению следить за тем, как пользователь “свайпает” или переставляет итемы между собой. Перемещение я рассматривать не буду, хотя его реализация весьма проста.</p>
+<p>Рассмотрим нужные нам методы “коллбека”:</p>
+<pre><code>int getMovementFlags(RecyclerView, ViewHolder) 
+
+void onChildDraw(Canvas, RecyclerView, ViewHolder, float, float, int, boolean) 
+
+boolean onMove(RecyclerView, ViewHolder, ViewHolder) 
+
+void onSwiped(ViewHolder, int) 
+</code></pre><p>Ну и ещё парочку тех, которые нам нужно переопределить:</p>
+<pre><code>boolean isLongPressDragEnabled() 
+
+boolean isItemViewSwipeEnabled() 
+</code></pre><p>1 . <code>getMovementFlags</code> — позволяет вам задавать флаги движения для каждого итема в <code>RecyclerView</code>, который представленный его <code>ViewHolder</code>-ом.</p>
+<p>Зададим возможность свайпать только если это обычный итем, а не заголовок в группе.</p>
+<pre><code>@Override
+public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+	// Задайте флагам значение 0, если они не должны перемещаться
+	int swipeFlags = 0;
+	int dragFlags = 0;
+	// Если имеем дело с обычным итемом, то задаём флаги движения вправо и влево
+	if (viewHolder instanceof TestAdapter.ItemViewHolder)
+		int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+
+	// Используем стандартный метод для создания битмаски флагов движения
+	return makeMovementFlags(dragFlags, swipeFlags);
+}
+</code></pre><p>Наш адаптер же выглядит примерно так:</p>
+<pre><code>public class TestAdapter extends RecyclerView.Adapter&lt;RecyclerView.ViewHolder&gt; {
+
+	. . .
+
+	public static class HeaderViewHolder extends RecyclerView.ViewHolder {
+		. . .
+	}
+
+	public static class ItemViewHolder extends RecyclerView.ViewHolder {
+		. . .
+	}
+}
+</code></pre><p>Заранее не забудем, что нужно “<em>включить</em>” возможность свайпа итемов и “<em>отключить</em>” возможность их перемещения между собой:</p>
+<pre><code>@Override
+public boolean isLongPressDragEnabled() {
+    return false;
+}
+
+@Override
+public boolean isItemViewSwipeEnabled() {
+    return true;
+}
+</code></pre><p>Метод <code>onMove</code> нам не понадобится в силу неиспользования возможности перемещать итемы между собой:</p>
+<pre><code>@Override
+public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+	return false;
+}
+</code></pre><p>2 . <code>onSwiped()</code> — метод, который вызывается после того, как итем был конечно перемещён вправо или влево. Тут можно запросто узнать направление свайпа и вызвать нужный нам метод:</p>
+<pre><code>@Override
+public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+	if (viewHolder instanceof TestAdapter.ItemViewHolder) {
+		TestAdapter.ItemViewHolder holder = (TestAdapter.ItemViewHolder) viewHolder;
+		// 32 — вправо, а 16 - влево. Определено эксперементальным путём
+		if (direction == 32) {
+			// вызываете ныжные вам методы
+			holder.onSwipedRight();
+			. . .
+		} else {
+			. . .
+		}
+	}
+}
+```3 . Ну и на десерт самое вкусное — `onChildDraw()`. Этот метод вызывается тогда, когда вы свайпаете или перемещаете итемы между собой в границах `RecyclerView`. Именно он даёт вам целый полигон для кастомизации: анимации, разные вьюшки, буквально всё, что может придти в голову вашему дизайнеру. 
+
+Не буду демонстрировать что-то сложное на этом примере, лучше просто распишу значения некоторых параметров для большей ясности. 
+</code></pre><pre><code>@Override
+public void onChildDraw(Canvas c, RecyclerView recyclerView,  RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+	// просто cдвигаем итем в направлении свайпа
+	viewHolder.itemView.setTranslationX(dX);
+}
+</code></pre><p>И так, о параметрах:</p>
+<ol>
+<li><code>Canvas c</code> - <em>канвасы</em> для отрисовки.</li>
+<li><code>float dX</code> - смещение итема относительно оси <code>X</code> в пикселах.</li>
+<li><code>float dY</code> - смещение итема относительно оси <code>Y</code> в пикселах.</li>
+<li><code>int actionState</code> - представлеяет какое действие сейчас происходит. Может принимать значения <code>ACTION_STATE_SWIPE</code>, <code>ACTION_STATE_DRAG</code> и <code>ACTION_STATE_IDLE</code>.</li>
+<li><code>boolean isCurrentlyActive</code> - <code>true</code>, если итем двигает человек, <code>false</code>, если итем двигается программно.</li>
+</ol>
+<p>В конце концов, после создания вашего <em>коллбека</em>, вам нужно “навесить” сделанный вами обработчик на вашу <code>RecyclerView</code>. Делается это очень просто:</p>
+<pre><code>ItemTouchHelper.Callback callback = new MyItemTouchHelperCallback(); 
+ItemTouchHelper touchHelper = new ItemTouchHelper(callback); 
+touchHelper.attachToRecyclerView(recyclerView); 
+</code></pre><p>Ну вот и всё, ваш свайп готов, можно жать на “<em>Run</em>” и идти пить чай.</p>
+<h2 id="ps">P.S.</h2>
+<p>Статью меня попросили написать в нашем ламповом
+Android-диалоге в Telegram. Заходите к <a href="https://telegram.me/joinchat/AASSeDxeFHSAkKO4rydImg">нам</a>, там уютно.</p>
+<p>Если же у вас есть вопросы, то вы можете оставлять их здесь в комментариях, в нашем Android-чате в Telegram, или писать <a href="https://vk.com/dorosh_artem">мне</a> в личку в VK.</p>
+<p>Ну а если вы хотите поделиться своим опытом у нас в блоге, то смело обращайтесь ко мне, или к другим администраторам “ІТ КПІ”. Помните, у вас всегда есть такая возможность!</p>
+<p><img src="/images/2016/01/1453581556_4704904265344a2a9f66b1a81ea2b30f.png" alt=""></p>
+<p>Tags: Android, Java, Design</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

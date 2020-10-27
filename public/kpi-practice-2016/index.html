@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Кілька слів про КПІшну практику, або &#34;Як NodeJS&#39;ер смикав Twitter API з Python&#39;а&#34;" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/kpi-practice-2016/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-07-16
+" /> <meta property="article:modified_time" content="2016-07-16
+" />
+
+
+
+
+
+
+    <title>Кілька слів про КПІшну практику, або &#34;Як NodeJS&#39;ер смикав Twitter API з Python&#39;а&#34;</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/kpi-practice-2016/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">Кілька слів про КПІшну практику, або &#34;Як NodeJS&#39;ер смикав Twitter API з Python&#39;а&#34;</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-07-16">July 16, 2016</time>
+                <span class="author">by <a href="mailto:m.vlasov@post.com">MaxymVlasov</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/08/1470174402_3317c88c7bc5440282eab3856290536e.jpg" class="post-image full-img">
+</div>
+<p>Перш ніж перейти до суті проекту, розкажу передісторію. Якщо вам вона нецікава – переходьте відразу до <a href="#console">початку розробки</a>.</p>
+<h2 id="передісторія">Передісторія</h2>
+<p>Все почалось ще ген зна коли. До мене дійшла інфа, що влітку 3-го курсу буде практика. Само собою, я про це не сильно хвилювався аж до травня цього року. Як бекендер на JS (специфічні смаки і все-таке :), на початках я збирався знайти практику на NodeJS, або хоча б підтягнути фронтенд. На горизонті майоріли світлі прапори Infopulse і EPAM, та до перших я так і не знайшов час податися, а до  других мені після вхідного тесту перехотілося йти, так що я не засмутився, як не пройшов.</p>
+<p>Так як глашатаї ФІОТа рознесли, що документи про проходження практики не на кафедрі/НІІ приймають до 26-го травня (насправді ні – можна прийти й домовитись про принесення доків пізніше, або просто принести пізніше, проте вас можуть послати, навіть якщо вас півгрупи), так що я задався ціллю знайти собі нормальну і цікаву практику до Дня X.</p>
+<p>На той момент лишалось 10 днів до &ldquo;дедлайну подачі&rdquo;, тож я вирішив попитати знайомих старшокурсників, хто, як і де проходив практику, і чи не знають вони, де можна поJSсити. Так я вийшов на <a href="http://wdc.org.ua/uk">WDC</a>, що має офіс у 6-му корпусі, і <a href="https://github.com/kpi-wdc/">проект на NodeJS</a>.</p>
+<p>Тож, наступного дня, у вівторок, я зайшов з фразою &ldquo;чув що у вас можна практику пройти на NodeJS&rdquo; у 318-6, де секретар взяла мій контакти і&hellip; на тому все. Так як тиждень не було ніякої реакції, то я, для перестраховки, у суботу вирішив податись на <a href="https://jobs.dou.ua/companies/devops-events/vacancies/27981/">організатора івентів по DevOps</a>, аби розібратись <a href="https://goo.gl/Hqlsrb">що ж це таке</a>, та й в організації івентів маю досвід. Коли мені звідти таки передзвонили, я вже влаштувався на практику в WDC :)</p>
+<p>Скажу вам, що нічого смішнішого, ніж написання розділу скілів у резюме івент-мейкера, я у цій сфері ще не робив. Серйозно, скіл володіння МС Офісом, гугло-доками і формами, відеодзвінки і т.д. – це ж треш якийсь)
+<br>Остаточну версію можна <a href="https://vk.com/doc96849502_437515332">переглянути тут</a>.</p>
+<p>Так як програмування мені імпонує трохи більше за організацію подій, я в понеділок (3 дні до дедлайну) вирішив навідатись в WDC і попитати щодо практики. Цього разу удача була на моїй стороні, бо на місці був і головний по практиці, і, як пізніше з’ясувалось, мій керівник з практики. NodeJS мені не дістався, бо усі проекти на ньому зав’язані на <a href="http://comsys.kpi.ua/ukrainian/teachers/50/">Болдака</a> (це класнючий препод на кафедрі ОТ, ФІОТ), а він цього літа не хотів займатись даною справою.</p>
+<p>Тож, мене відправили до <a href="http://ies.nau.edu.ua/index.php/uk/kafedra-zemlevporyadnykh-tekhnolohiy/kolektiv-kafedri?id=242">Путренка Віктора Валентиновича</a> - дуже прошареної в географії людини. Після маленьких розпитів на тему &ldquo;хто я такий, що вмію і чого хтів би навчитись&rdquo;, де я, між іншим, згадав, що влітку збираюсь повчити Python, мені була делегована доволі актуальна і цікава задача.</p>
+<h2 id="задача">Задача</h2>
+<p>Задача полягала в тому, щоб розібратись, чи працює в <a href="http://www.qgis.org/">QGIS</a> (опенсорсна прога для візуалізації гео-даних) експериментальний плагін <a href="https://plugins.qgis.org/plugins/geotweet/">twitter2qgis</a> (<a href="https://github.com/Geolicious/geotweet">github</a>) по діставанню геотвітів (твіти з координатами) і зберіганню їх у <a href="https://uk.wikipedia.org/wiki/Shapefile">Shapefile</a> (бажано), або у <a href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON</a>. Якщо не працюватиме – зробити свій, інакше – отримати іншу задачу.</p>
+<p>Плагін виявився неробочим.</p>
+<p>Наступним кроком був пошук будь-яких робочих опенсорс аналогів, які б працювали. Можливо я погано шукав, та вдалось знайти аж <a href="https://github.com/Pinperepette/GeoTweet">1 консольну програму</a>, що таки працювала! Правда, вона крешилася вже після захоплення одного-єдиного геотвіту, на моменті відображення координат у консольці. ¯_(ツ)_/¯</p>
+<h2 id="реалізація">Реалізація</h2>
+<h3 id="функціональність">Функціональність</h3>
+<p>В процесі розробки мені вдалося реалізувати наступну функціональність:</p>
+<ul>
+<li>Можливість підкидувати ключі авторизації до API твіттера через GUI і зберігати їх у файлі. В разі відсутності нових – підвантажувати попередні.</li>
+<li><strong>Дані для пошуку:</strong>
+<ul>
+<li>Локація (полігон)</li>
+<li>Ключові слова</li>
+<li>Кількість твітів</li>
+<li>Час, коли зупинити пошук</li>
+</ul>
+</li>
+<li><strong>Виведення результатів:</strong>
+<ul>
+<li>Метод пошуку:
+<ul>
+<li>В ріалтаймі (через Streaming API)</li>
+<li>По всьому твіттеру  (REST API)</li>
+</ul>
+</li>
+<li>Кількість даних, що зберігаються у кожному твіті:
+<ul>
+<li>Всі</li>
+<li>Мінімальна кількість (дата створення, текст твіту і координати)</li>
+<li>Жодних (тільки координати)</li>
+</ul>
+</li>
+<li>Формат даних на виході:
+<ul>
+<li>GeoJSON</li>
+<li>Shapefile</li>
+<li>У вигляді шару в QGIS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Help</strong> до кожного пункту, що може викликати питання.</li>
+</ul>
+<p>Станом на 16.07.16 це виглядає так:
+<img src="/images/2016/07/1468636973_defde3b794f64cb2a9c3be04c8aeb0af.png" alt=""></p>
+<p>Більше інформації по кожному з пунктів доступно в <a href="https://github.com/MaxymVlasov/Tweets/wiki">документації проекту</a>.</p>
+<h3 id="розробка-console-версії">Розробка console-версії</h3>
+<p>Першим ділом я поринув у різнобарвний світ Twitter API,  де й завис на день.</p>
+<p>З хорошого: в документації є все. Або майже все.</p>
+<p>З поганого: треба прочитати <a href="https://dev.twitter.com/overview/api">добіса тексту</a>, інакше не зрозумієш, що відбувається.</p>
+<p>Наступного дня, все ще не до кінця відійшовши від апі твіттера, вирішив заюзати вибрані методи. Проте з 2012-го року напряму до них достукатись не можна – потрібні ключі авторизації. Постійний ключ можна отримати виконуючи <a href="https://smashballoon.com/custom-twitter-feeds/docs/create-twitter-app/">наступні інструкції</a>.</p>
+<p>Крім того, для простого доступу до апі, знадобиться бібліотека, в моєму випадку – <a href="http://tweepy.readthedocs.io/">tweepy</a>. Хто ж хоче підтримку Python 3 – для них існує <a href="https://twython.readthedocs.io/en/latest/">twython</a> і <a href="https://github.com/webknjaz/twit-hist/blob/fc073b4414ad24790d5c6f8f99bcf3d077076e46/crawler3.py">трохи реалізації</a> на ньому.</p>
+<p>На жаль, QGIS не вміє у 3-ій Python, так  що більшість подальших костилів будуть пов’язані з особливостями другої версії.</p>
+<p>Спочатку я вирішив реалізувати звернення через метод <a href="https://dev.twitter.com/streaming/reference/post/statuses/filter">filter</a> з Streaming API, що дозволило б колекціонувати твіти в реальному часі.</p>
+<pre><code>class listener(StreamListener):
+    def on_data(self, data):      
+        return True
+
+    def on_error(self, status):
+        print 'ERROR ' + str(status)
+        if status == 420:
+            print 'Exceed a limit requests connect to' \
+                + 'the streaming API in a window of time (15min)'
+            return False  # Returning False in on_data disconnects the stream
+
+auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+
+stream = Stream(auth, listener())
+stream.filter(locations=locations, track=keywords)
+</code></pre><p>В <code>on_data</code> потрапляють всі твіти, що задовольняють задані в <code>stream.filter</code> умови. Додавання <code>locations</code> обмежує вхідний потік тільки геотвітами, що прискорює пошук останніх в ~20 разів.</p>
+<p>Наступний крок – перетворення отримуваного json в geojson.</p>
+<p>Так, виглядає типовий geojson-файл:</p>
+<pre><code>{ &quot;type&quot;: &quot;FeatureCollection&quot;,
+    &quot;features&quot;: [
+      { &quot;type&quot;: &quot;Feature&quot;,
+        &quot;geometry&quot;: {&quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [102.0, 0.5]},
+        &quot;properties&quot;: {&quot;prop0&quot;: &quot;value0&quot;}
+        },
+       ]
+     }
+</code></pre><p>Так як Твіттер за один раз віддає 1 твіт, то перетворити його у geojson не складає проблем.</p>
+<p>Для цього треба витягти геометрію за ключами з твіту і передати усю інформацію, що нас цікавить, у <code>&quot;properties&quot;</code>.
+<br>Для полігонів координати лежать в ’[&ldquo;place&rdquo;][&ldquo;bounding_box&rdquo;][&ldquo;coordinates&rdquo;]’, для точок – в <code>[&quot;geo&quot;][&quot;coordinates&quot;]</code>.</p>
+<p>Ніби все просто, та тут виявилося, що QGIS відображає  дані різних типів у різних шарах. Це ускладнює обробку інформації, бо замість1 таблиці з даними по твітах ви матимете 2-3 менших.</p>
+<p><img src="/images/2016/07/1468951467_12c16bab763f42138562f886f4aa7537.png" alt=""></p>
+<p>Тож було прийнято рішення звести кожен полігон до точки у його центрі.</p>
+<p>Далі постала задача зробити shapefile з наявного geojson. Для цього я використав бібліотеку <a href="https://pypi.python.org/pypi/pyshp">pyshp</a>, що вміє у конвертацію всього і вся у шейпфайли. Швидко розібратись, що до чого, допоміг <a href="https://glenbambrick.com/2016/01/09/csv-to-shapefile-with-pyshp/">туторіал</a> по перетворенню CSV в Shapefile.</p>
+<p>Паралельно з усім описаним відбувалися танці з бубном навколо кодування рядків у другому пайтоні. Кому цікаво, у що це вилилось – ось  <a href="https://github.com/MaxymVlasov/Tweets/tree/console">код консольної версії</a>.</p>
+<p>І само собою, для гарного відображення в консольці додав функцію <code>print_time</code>, що відображає поточний стан речей.</p>
+<p><img src="/images/2016/07/1468954628_87ae7d9bcba84bed8acaa044c1231093.png" alt=""></p>
+<h3 id="розробка-gui">Розробка GUI</h3>
+<p>До того моменту, як я прочитав у вікі, що QGIS – це  скорочення від Quantum GIS, то щиро вірив що Q означає Qt, бо на ньому  висить гуі як самого QGIS, так і плагінів до нього. Пояснити, чому саме Qt (і чому Qt4), буде простіше, якщо згадати, що до версії 0.8 QGIS вмів у плагіни тільки на C++.</p>
+<p>Qt раніше не використовував, а ставити Qt Designer заради такого маленького плагіна мені здалось оверкілом. До того ж, я мав у своєму розпорядженні інтерфейс twitter2gis!</p>
+<p><img src="/images/2016/07/1468636963_a3b069060cdb4c5fa67c5be0da6df1ac.png" alt=""></p>
+<p>Так, він незрозумілий і абсолютно не інтуїтивний, проте це вже щось.</p>
+<p>Згенерував собі чистий додаток за допомогою <a href="http://www.dimitrisk.gr/qgis/creator/">QGIS plugin creator</a> і підкинув в нього .ui файл  twitter2gis, який складається з одного лиш xml.</p>
+<p>Першим ділом рефакторнув xml, що його 100% Qt Designer згенерував, бо нормальні <a href="https://pp.vk.me/c633930/v633930502/338b4/dlkKZBtKA5I.jpg">люди код так не пишуть</a>.</p>
+<p>Потім рефакторнув ще раз, і ще раз.</p>
+<p>Заліз у документацію, зрозумів що вона взагалі ніяк не розрахована на пряме редагування xml і, замість того, щоб поставити клятий Qt Designer, я почав експерементувати. Практика, все ж!</p>
+<p>Наприклад, все, що в доках Qt починається на <code>set</code>, має одноіменний аналог в xml, тільки вже без <code>set</code>:
+<code>setText(const QString &amp;)</code> в класі <a href="http://doc.qt.io/qt-4.8/qlabel.html#text-prop">QLabel</a>, аналогічно</p>
+<pre><code>&lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
+  &lt;property name=&quot;text&quot;&gt;
+    &lt;string&gt;&lt;/string&gt;
+  &lt;/property&gt;
+&lt;/widget&gt;
+</code></pre><p>Далі понавішував усіляких фінтєфлюшечок і розбив на категорії. Після декількох годин пересовування на 3 пікселя кнопочок, я був задоволений результатом. Отримав наступне:</p>
+<p><img src="/images/2016/07/1468636973_defde3b794f64cb2a9c3be04c8aeb0af.png" alt=""></p>
+<h3 id="обєднання-і-допилювання">Об’єднання і допилювання</h3>
+<p>Наступним етапом стало об’єднання консольного коду і графічного інтерфейсу.</p>
+<p>Потрібно помістити код в <code>if result == 1:</code>, і тоді він виконуватиметься при натиснені &ldquo;ОК&rdquo; в GUI. Але так як ідея зміщувати весь основний код – не з розумних, і методом тику було встановлено, що <code>def run</code> працює у якомусь циклі (інакше як воно <code>if result == 1</code> вчасно ловить), я вирішив оброблювати протилежну ситуацію:</p>
+<pre><code>if not result:
+    return False
+</code></pre><p>Перемістивши код під <code>if</code>, запустив плагін на виконання і&hellip; QGIS завис до моменту закінчення роботи плагіну. Це Вирішилося додаванням параметра <code>async=True</code> в streamAPI() tweepy.</p>
+<p>Далі я захотів прогрес-бар, як в geotweet.
+<img src="/images/2016/07/1469756850_59060105fe324bacbba80ec49f6adf4b.png" alt="">
+Ну що ж, я його зробив (рерайтинг:)). Тільки виникло одне АЛЕ: QGIS в синхронному режимі роботи плагіна зависає і не виводить повідомлень до завершення виконання, а в асинхронному закривається після першого графічного повідомлення. Це нікуди не годиться.</p>
+<p>Тож я звернув увагу на консольні повідомлення.</p>
+<p>За замовчуванням ця панель логів прихована. Та в неті є хак-рецепт по її примусовому відкриттю:</p>
+<pre><code>logDock = self.iface.mainWindow().findChild(QDockWidget, 'MessageLog')
+logDock.show()
+</code></pre><p>Тож, при запуску плагіна на виконання, вискакує така панелька:
+<img src="/images/2016/07/1469757010_d0bf17f7cb07475483f60ebf427be536.png" alt="">
+В ній через кожних 50 запитів (~щосекунди) виводиться поточний стан справ, і, що головне, в той же час можна паралельно працювати в QGIS.</p>
+<h2 id="плани-на-майбутнє">Плани на майбутнє</h2>
+<p>Допилити плагін, а саме:</p>
+<ul>
+<li>Додати пошук через REST API (зараз тільки через Streaming API)</li>
+<li>Додати тести по навантаженню на систему кожною конфігурацією та іншу документацію</li>
+<li>Виводити в консоль QGIS усі помилки (python і т.д.)</li>
+<li>Зробити повноцінну консольну версію</li>
+<li>Зробити валідатор даних у geojson. Від виконуватиме перевірки і перетворення отриманих даних у валідний geojson в разі несанкціонованого закриття програми.</li>
+</ul>
+<p>Репозиторій <a href="https://github.com/MaxymVlasov/Tweets">доступний тут</a>. Наразі там 2 гілки: сам плагін (master) і зачатки консольної версії.</p>
+<p>Конструктивна критика коду і стилю (з опором на стайлгайди) – вітається)</p>
+<p>Tags: python, qt, qgis, літня практика, КПІ, WDC</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

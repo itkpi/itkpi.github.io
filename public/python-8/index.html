@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Новости мира Python: следующим релизом будет Python 8" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/python-8/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-04-01
+" /> <meta property="article:modified_time" content="2016-04-01
+" />
+
+
+
+
+
+
+    <title>Новости мира Python: следующим релизом будет Python 8</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/python-8/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">Новости мира Python: следующим релизом будет Python 8</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-04-01">April 1, 2016</time>
+                <span class="author">by <a href="mailto:roman.rader@gmail.com">Roman Rader</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/04/1459514580_2ba38f728fe14270b802869c719209cc.jpg" class="post-image full-img">
+</div>
+<p><em>Недавно в официальной почтовой рассылке Python-Dev было опубликовано обращение PSF к сообществу с анонсом довольно глобальных новостей: Python меняет подход к нумерации версий
+<a href="https://mail.python.org/pipermail/python-dev/2016-March/143603.html">mail.python.org/pipermail/python-dev/2016-March/143603.html</a>.</em></p>
+<p><em>Ниже приводим перевод обращения на русский язык.</em></p>
+<hr>
+<p><strong>[Python-Dev] Следующим мажорным номером версии Python будет Python 8</strong></p>
+<p>Привет,</p>
+<p>Python 3 становится все более и более популярным, и приближается к опасной черте — он может стать более популярным, чем Python 2. PSF приняли решение, что снова настало время разработать новый секретный план, чтоб гарантировать непрерывность страданий пользователей Python от перевода на новую версию их легаси кода.</p>
+<p>PSF рада анонсировать новый релиз Python — Python 8!</p>
+<p>Почему 8? Просто чтобы было больше, чем Perl 6 и PHP 7, а также отсылка к PEP 8. Кстати, каждый минорный релиз теперь будет умножать версию на 2. Выпуская релиз Python 8 в 2016 году и делая релиз каждые два года, мы побъем Firefox 44 в 2022 году (Python 64) и Windows 2003 в 2032 году (Python 2048).</p>
+<p>Мажорный релиз требует серьезных изменений, чтобы оправдать инкремент версии: новая киллер фича в том, что больше вы не сможете импортировать модуль который не написан в соответствии с PEP 8. Это будет гарантировать, что весь ваш код чист.
+Пример:</p>
+<pre><code>$ python8 -c 'import keyword'
+Lib/keyword.py:16:1: E122 continuation line missing indentation or outdented
+Lib/keyword.py:16:1: E265 block comment should start with '# '
+Lib/keyword.py:50:1: E122 continuation line missing indentation or outdented
+(...)
+ImportError: no pep8, no glory
+</code></pre>
+<p>Хорошие новости: так как <em>ни один</em> модуль текущей стандартной библиотеки Python 3 не соответствует PEP 8, стандартная библиотека будет сведена к одному
+единственному модулю, который является новым в Python 8: pep8. Стандартная библиотека перемещена в Python Cheeseshop (PyPI), в ответ на старый и популярный запрос пользователей.</p>
+<p>НЕ ПАНИКУЙТЕ! Вы все еще можете импортировать легаси код в Python 8, вы просто должны переименовать все ваши модули добавив суффикс &ldquo;_noqa&rdquo; к имени файла. Например, переименовать utils.py в utils_noqa.py. Побочный эффект заключается в том, что вы должны обновить все импорты. Например, заменить
+&ldquo;import django&rdquo; на &ldquo;import django_noqa&rdquo;. Исследование PSF показало, что это лучший вариант разделения сообщества Python, а также поможет убедиться что все пользователи будут вне себя от злости.</p>
+<p>План таков: в течение 10 лет, по меньшей мере, 50% от 77000 пакетов на Python Cheeseshop будут обновляться, добавляя &ldquo;_noqa&rdquo; суффикс. После 2020 года,
+PSF начнет спонсировать троллей, которые будут раздражать пользователей Python 3 и заставить их мигрировать на Python 8.</p>
+<p>Работа над Python 8 является в стадии разработки (это все еще альфа-версия), стандартная библиотека еще не была удалена. Будем надеяться, что любая попытка импортировать модуль стандартной библиотеки приведет к исключению.</p>
+<p>Не стесняйтесь предлагать новые идеи, чтобы сделать Python 8 более несовместимым с Python 3!</p>
+<p>Примечание: Изменение уже применено в ветке по умолчанию в репозитории Python:</p>
+<p><a href="https://hg.python.org/cpython/rev/9aedec2dbc01">https://hg.python.org/cpython/rev/9aedec2dbc01</a></p>
+<p>Развлекайтесь,</p>
+<p>Виктор</p>
+<hr>
+<p><a href="https://mail.python.org/pipermail/python-dev/2016-March/143603.html">original post by Victor Stinner victor.stinner at gmail.com</a></p>
+<p>Thu Mar 31 17:40:46 EDT 2016</p>
+<p>Tags: fun, python</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

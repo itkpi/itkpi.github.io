@@ -1,0 +1,28 @@
+baseURL = "https://itkpi.pp.ua/"
+languageCode = "uk-ua"
+title = "ІТ КПІ"
+theme = "itkpi-theme"
+enableEmoji = true
+copyright = "IT KPI ©"
+description = "IT KPI Blog"
+
+[markup.goldmark.renderer]
+  unsafe= true
+
+[Permalinks]
+  post = ":slug"
+
+[[params.menu]]
+  name = "ПРО НАС"
+  url = "/about"
+
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+    useSessionStorage = true
+  [privacy.twitter]
+    enableDNT = true
+  [privacy.youtube]
+    privacyEnhanced = true

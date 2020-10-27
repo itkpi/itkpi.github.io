@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="C# &#43; XAML = Hamburger Menu. Part 2" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/hamburger-menu-2/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-02-09
+" /> <meta property="article:modified_time" content="2016-02-09
+" />
+
+
+
+
+
+
+    <title>C# &#43; XAML = Hamburger Menu. Part 2</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/hamburger-menu-2/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">C# &#43; XAML = Hamburger Menu. Part 2</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-02-09">February 9, 2016</time>
+                <span class="author">by <a href="mailto:maksim36ua@gmail.com">Maksym Khamrovskyi</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/02/1455101294_03ba9e36e09d4ea5af55010fbbc06d2c.jpg" class="post-image full-img">
+</div>
+<p><a href="http://itkpi.pp.ua/hamburger-menu-1/">Перша частина тут</a>. Якщо ви це читаєте, значить приступаємо до наповнення сторінки контентом.</p>
+<p>Нижче від <code>&lt;RelativePanel&gt;</code> у нас знаходиться <code>&lt;SplitView&gt;</code>.</p>
+<blockquote>
+<p><code>&lt;SplitView&gt;</code> грає роль контейнера з двома вікнами. В<code>&lt;SplitView.Pane&gt;</code> поміщається навігаційне меню, яке зазвичай приховане або не повністю відображається. Її вміст може ставати видимим або ховатись в залежності від властивостей, які задамо. <code>&lt;SplitView.Content&gt;</code> містить весь контент сторінки (вибачте за каламбур).</p>
+</blockquote>
+<p>Ми розбили сторінку на дві стрічки. У верхній – кнопки «Меню», «Назад» і панель пошуку. В нижній будуть розташовані пункти меню. Якщо не вказано стрічку, в якій буде знаходитись елемент – він розміщується в першій за замовчуванням. Нумерація починається з «0», варто мати це на увазі. <code>&lt;RelativePanel&gt;</code> автоматично помістилась у першу за порядком і нульову за номером стрічку.</p>
+<p>Наш SplitView поміщаємо в другу стрічку, тому задаємо прикріплену властивість (attached property) <code>Grid.Row=&quot;1&quot;</code></p>
+<p>Код такий:</p>
+<pre><code>&lt;SplitView Grid.Row=&quot;1&quot;&gt;
+
+        &lt;SplitView.Pane&gt;                
+        &lt;/SplitView.Pane&gt;
+
+        &lt;SplitView.Content&gt;                
+        &lt;/SplitView.Content&gt;
+
+&lt;/SplitView&gt;
+</code></pre>
+<p>Щоб зразу наповнити сторінку контентом — додаємо <code>&lt;Frame&gt;</code>, у який вставимо наші IT_KPI.xaml та MS_KPI.xaml Також задаємо ім’я.</p>
+<blockquote>
+<p><code>&lt;Frame&gt;</code> відображає екземпляри сторінок, підтримує навігацію на нові сторінки і містить навігаційну історію щоб надати можливість переміщатись туди-сюди по сторінкам. По суті, призначення цього елементу таке ж, як і в HTML: відображати всередині себе шматок іншої сторінки.</p>
+</blockquote>
+<p>Код:</p>
+<pre><code>&lt;SplitView Grid.Row=&quot;1&quot;&gt;
+
+        &lt;SplitView.Pane&gt;                
+        &lt;/SplitView.Pane&gt;
+
+        &lt;SplitView.Content&gt;
+            &lt;Frame Name=&quot;MyFrame&quot;&gt;
+            &lt;/Frame&gt;
+        &lt;/SplitView.Content&gt;
+
+&lt;/SplitView&gt;
+</code></pre>
+<p>Для пунктів меню скористаємось елементом керування <ListBox>.</p>
+<blockquote>
+<p><code> &lt;ListBox&gt;</code> зазвичай слугує для відображення списків. Елемент являє собою блок, всередині якого розміщуються стрічки з пунктами, з-поміж яких користувач може обирати один або декілька.</p>
+</blockquote>
+<p>Елементи <code>&lt;ListBox&gt;</code> задаються тегом <code>&lt;ListBoxItem&gt;</code>, які будуть слугувати пунктами меню.</p>
+<p>В кожному пункті нам потрібно два елементи: іконка (зліва) та назва пункту (справа). Для того, щоб помістити послідовно два елементи скористаємось елементом <code>&lt;StackPanel&gt;</code> і вкажемо її орієнтацію як горизонтальну.</p>
+<blockquote>
+<p><code>&lt;StackPanel&gt;</code> багато в чому схожа на <code> &lt;ListBox&gt;</code>, але має більше властивостей і ширше застосування. Призначена для того, щоб розташовувати різні елементи один над іншим, а не лише стрічки. Орієнтацію можна змінити на горизонтальну.</p>
+</blockquote>
+<pre><code>&lt;SplitView Grid.Row=&quot;1&quot;&gt;
+
+        &lt;SplitView.Pane&gt; 
+            &lt;ListBox&gt; &lt;!-- Меню --&gt;
+
+                &lt;ListBoxItem&gt; &lt;!-- Пункт меню --&gt;
+                    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;/StackPanel&gt;
+                &lt;/ListBoxItem&gt;
+
+                &lt;ListBoxItem&gt;
+                    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+                  &lt;/StackPanel&gt;
+                &lt;/ListBoxItem&gt;
+
+            &lt;/ListBox&gt;
+        &lt;/SplitView.Pane&gt;
+
+        &lt;SplitView.Content&gt;
+            &lt;Frame Name=&quot;MyFrame&quot;&gt;
+            &lt;/Frame&gt;
+        &lt;/SplitView.Content&gt;
+
+ &lt;/SplitView&gt;
+</code></pre>
+<p>В кожен тег <code>&lt;StackPanel&gt;</code> вставляємо два текстові блоки і вписуємо в них іконки. Також дамо назви кожному <code>&lt;ListBoxItem&gt;</code>, щоб можна було достукатись до них з обробника подій. Задамо два атрибути для <code>&lt;ListBox&gt;</code>:</p>
+<pre><code>SelectionMode=&quot;Single&quot; SelectionChanged=&quot;ListBox_SelectionChanged&quot;
+</code></pre>
+<blockquote>
+<p><code>SelectionMode=&quot;Single&quot;</code> говорить про те, що в кожен момент часу лише один елемент меню може бути обраний.</p>
+</blockquote>
+<blockquote>
+<p><code>SelectionChanged=&quot;ListBox_SelectionChanged&quot;</code> – це обробник події, що реагує на переключання пункту меню</p>
+</blockquote>
+<p>Не забудемо про <code>&lt;SplitView&gt;</code> і додамо йому кілька атрибутів. Ім’я, режим відображення та розміри панелі у відкритому і закритому станах.</p>
+<pre><code>DisplayMode=&quot;CompactOverlay&quot; CompactPaneLength=&quot;56&quot;            
+OpenPaneLength=&quot;200&quot;
+</code></pre>
+<p>Зараз код виглядає так:</p>
+<pre><code>&lt;SplitView Grid.Row=&quot;1&quot;
+       Name=&quot;MySplitView&quot;
+       DisplayMode=&quot;CompactOverlay&quot;
+       CompactPaneLength=&quot;56&quot;
+       OpenPaneLength=&quot;200&quot;&gt;
+
+        &lt;SplitView.Pane&gt;
+        &lt;ListBox SelectionMode=&quot;Single&quot;
+            SelectionChanged=&quot;ListBox_SelectionChanged&quot;&gt;
+
+            &lt;ListBoxItem Name=&quot;IT_KPI&quot;&gt;
+                &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;TextBlock FontFamily=&quot;Segoe MDL2 Assets&quot;
+                        FontSize=&quot;36&quot;
+                        Text=&quot;&amp;#xE80F;&quot;/&gt;
+                    &lt;TextBlock FontSize=&quot;24&quot;&gt;IT KPI&lt;/TextBlock&gt;
+                &lt;/StackPanel&gt;
+            &lt;/ListBoxItem&gt;
+
+            &lt;ListBoxItem  Name=&quot;MS_KPI&quot;&gt;
+                &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;TextBlock FontFamily=&quot;Segoe MDL2 Assets&quot;
+                        FontSize=&quot;36&quot;
+                        Text=&quot;&amp;#xE1CE;&quot;/&gt;
+                    &lt;TextBlock FontSize=&quot;24&quot;&gt;MS KPI&lt;/TextBlock&gt;
+                &lt;/StackPanel&gt;
+            &lt;/ListBoxItem&gt;
+
+        &lt;/ListBox&gt;
+        &lt;/SplitView.Pane&gt;
+
+        &lt;SplitView.Content&gt;
+            &lt;Frame Name=&quot;MyFrame&quot;&gt;
+            &lt;/Frame&gt;
+        &lt;/SplitView.Content&gt;
+
+&lt;/SplitView&gt;
+</code></pre>
+<p>Перш ніж запустити проект – мусимо додати останній штрих.
+Гортаємо код вгору до нашої кнопки «Гамбургер», ставимо курсор на назву обробника події у властивості Click і тиснемо F12.</p>
+<p><img src="/images/2016/02/1455047587_3e326a78c4674446aeecea7616087985.jpg" alt=""></p>
+<p>Відкриється файл MainPage.xaml.cs, який містить обробники подій з нашої головної XAML-сторінки. В методі HamburgerButton_Click прописуємо одну єдину стрічку, що інвертує стан панелі <code>&lt;SplitView.Pane&gt;</code>.</p>
+<pre><code>MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+</code></pre>
+<p>Тепер можна запускати проект і дивитись, що вийшло.</p>
+<p><img src="/images/2016/02/1455047633_0b1a63ee13c74143b28a574341c02814.jpg" alt=""></p>
+<p>Текст трохи виглядає з меню. На щастя, це легко пофіксити, вказавши атрибут <code>Margin=&quot;20,0,0,0&quot;</code> для другого <code>&lt;TextBlock&gt;</code>. Це змусить його посунутись на 20 пікселів праворуч.</p>
+<pre><code>&lt;TextBlock FontSize=&quot;24&quot; Margin=&quot;20,0,0,0&quot;&gt;IT KPI&lt;/TextBlock&gt;
+…
+&lt;TextBlock FontSize=&quot;24&quot; Margin=&quot;20,0,0,0&quot;&gt;MS KPI&lt;/TextBlock&gt;
+</code></pre>
+<p>Тепер маємо робочий приклад меню, який реагує на натискання кнопки «Hamburger». Час йти далі і написати трохи логіки.</p>
+<p>Коли додаток стартує ми хочемо, щоб завантажувалась одна з XAML-сторінок і назва сторінки вгорі змінювалась. Для цього в конструкторі MainPage() прописуємо наступне:</p>
+<pre><code>MyFrame.Navigate(typeof(НАЗВА_СТОРІНКИ)); 
+TitleTextBlock.Text = &quot;НАЗВА_СТОРІНКИ&quot;;
+</code></pre>
+<p>При першому запуску з&rsquo;являється головна сторінка, тому не треба, щоб кнопка «Назад» відображалась.</p>
+<p>Приховуємо її стрічкою:</p>
+<pre><code>BackButton.Visibility = Visibility.Collapsed; 
+</code></pre>
+<p>Оголошуємо про те, що сторінка IT_KPI.xaml тепер активна</p>
+<pre><code>IT_KPI.IsSelected = true;
+</code></pre>
+<p>В мене конструктор виглядає так:</p>
+<pre><code>public MainPage()
+    {
+        this.InitializeComponent();
+        MyFrame.Navigate(typeof(IT_KPI));
+       TitleTextBlock.Text = &quot;IT KPI&quot;;
+        BackButton.Visibility = Visibility.Collapsed;
+        IT_KPI.IsSelected = true;
+    }
+</code></pre>
+<p>Змінимо вміст ListBox_SelectionChanged так, щоб він реагував на переключення пунктів меню і показував бажану сторінку.</p>
+<pre><code>    private void ListBox_SelectionChanged
+          (object sender, SelectionChangedEventArgs e)
+    {
+        if (IT_KPI.IsSelected)
+        {
+            MyFrame.Navigate(typeof(IT_KPI));
+            TitleTextBlock.Text = &quot;IT KPI&quot;;
+        }
+        else if (MS_KPI.IsSelected)
+        {
+            MyFrame.Navigate(typeof(MS_KPI));
+            TitleTextBlock.Text = &quot;Microsoft KPI Group&quot;;
+        }
+    }
+</code></pre>
+<p>БДЩ, тепер наш додаток реагує на перемикання пунктів меню!</p>
+<p><img src="/images/2016/02/1455047777_dc24e7d28c324ac2a90135d8e8393ab5.jpg" alt=""></p>
+<p>Задамо невеликий відступ між кнопкою «Назад» і назвою сторінки. Йдемо в MainPage.xaml, знаходимо <code>&lt;TextBlock&gt;</code> на ім’я TitleTextBlock і дописуємо йому <code>Margin=&quot;20,5,0,0&quot;</code>. Ще не зайвим буде додати відступ у 10 пікселів для <code>&lt;Frame&gt;</code> у самому низу:</p>
+<pre><code>&lt;Frame Name=&quot;MyFrame&quot; Margin=&quot;10&quot;&gt;
+&lt;/Frame&gt;
+</code></pre>
+<p>Виглядає явно красивіше.</p>
+<p><img src="/images/2016/02/1455047835_153788d21816476dbc876c2cea1f071d.jpg" alt=""></p>
+<p>Кнопка «Назад» повинна вести на головну сторінку і зникати на ній. Натомість мусить відображатись на всіх інших сторінках. Це робиться відносно просто.</p>
+<p>Повертаємось до нашого методу ListBox_SelectionChanged і додаємо дві стрічки, що приховують і відображають кнопку в залежності від того, на якій сторінці зараз користувач.</p>
+<pre><code>private void ListBox_SelectionChanged
+               (object sender, SelectionChangedEventArgs e)
+    {
+        if (IT_KPI.IsSelected)
+        {
+            MyFrame.Navigate(typeof(IT_KPI));
+            TitleTextBlock.Text = &quot;IT KPI&quot;;
+            BackButton.Visibility = Visibility.Collapsed;
+        }
+        else if (MS_KPI.IsSelected)
+        {
+            BackButton.Visibility = Visibility.Visible;
+            MyFrame.Navigate(typeof(MS_KPI));
+            TitleTextBlock.Text = &quot;Microsoft KPI Group&quot;;
+        }
+    }
+</code></pre>
+<p>Єдине, що лишилось – вдихнути трохи життя в кнопку «Назад». Прямуємо до методу BackButton_Click і наповнюємо його:</p>
+<pre><code>private void BackButton_Click
+               (object sender, RoutedEventArgs e)
+    {
+        if (MyFrame.CanGoBack)
+        {
+            MyFrame.GoBack();
+            IT_KPI.IsSelected = true;
+        }
+    }
+</code></pre>
+<p>Код всіх трьох методів разом з конструктором:</p>
+<pre><code>public MainPage()
+    {
+        this.InitializeComponent();
+        MyFrame.Navigate(typeof(IT_KPI));
+        TitleTextBlock.Text = &quot;IT KPI&quot;;
+        BackButton.Visibility = Visibility.Collapsed;
+        IT_KPI.IsSelected = true;
+    }
+
+    private void HamburgerButton_Click
+               (object sender, RoutedEventArgs e)
+    {
+        MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+    }
+
+    private void BackButton_Click
+               (object sender, RoutedEventArgs e)
+    {
+        if (MyFrame.CanGoBack)
+        {
+            MyFrame.GoBack();
+            IT_KPI.IsSelected = true;
+        }
+    }
+
+    private void ListBox_SelectionChanged
+               (object sender, SelectionChangedEventArgs e)
+    {
+        if (IT_KPI.IsSelected)
+        {
+            MyFrame.Navigate(typeof(IT_KPI));
+            TitleTextBlock.Text = &quot;IT KPI&quot;;
+            BackButton.Visibility = Visibility.Collapsed;
+        }
+        else if (MS_KPI.IsSelected)
+        {
+            BackButton.Visibility = Visibility.Visible;
+            MyFrame.Navigate(typeof(MS_KPI));
+            TitleTextBlock.Text = &quot;Microsoft KPI Group&quot;;
+        }
+    }
+</code></pre>
+<p>Тепер можна запустити додаток і оцінити, що у нас вийшло. На цьому все, дякую за увагу! Сподіваюсь, було корисно.</p>
+<p><img src="/images/2016/02/1455047910_4f84c01d95f9412a927eb6458f7a9d4e.jpg" alt=""></p>
+<p><img src="/images/2016/02/1455047911_9ab4db5c25d7466f998a60d5bab1b933.jpg" alt=""></p>
+<p>Tags: dotNet, csharp</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

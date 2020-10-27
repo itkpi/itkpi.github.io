@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Контейнеры — это хорошо" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/containerization-is-good/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-02-06
+" /> <meta property="article:modified_time" content="2016-02-06
+" />
+
+
+
+
+
+
+    <title>Контейнеры — это хорошо</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/containerization-is-good/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">Контейнеры — это хорошо</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-02-06">February 6, 2016</time>
+                <span class="author">by <a href="mailto:roman.rader@gmail.com">Roman Rader</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/02/1454794628_266211a89b504aa5a55434de1d306710.jpg" class="post-image full-img">
+</div>
+<p><em>Ключевые слова: контейнеры, микросервисы, Docker (на самом деле нет).</em></p>
+<p>В статье будет рассмотрено</p>
+<ol>
+<li><a href="#1">Что это?</a></li>
+<li><a href="#2">Зачем это?</a></li>
+<li><a href="#3">Немного о микросервисах</a></li>
+<li><a href="#4">Зачем это нам в ІТ КПІ?</a></li>
+</ol>
+<h2 id="1-что-это">1. Что это?</h2>
+<p><em>Если вы знакомы с идеей контейнеров, можете сразу переходить ко второму разделу</em></p>
+<blockquote>
+<p>В контейнере можно запускать как один процесс, так и полноценную отдельную операционную систему, запуская процесс <code>init</code>.</p>
+</blockquote>
+<p>Контейнеризация — это совокупность механизмов операционной системы, которые позволяют запускать некоторые процессы в изолированной среде. В ядре linux реализованы такие виды изоляции [1]:</p>
+<ul>
+<li>Межпроцессового взаимодействия (IPC),</li>
+<li>Сетевые области видимости (NET),</li>
+<li>Области видимости точек монтирования (MNT),</li>
+<li>Идентификаторов процессов (PID),</li>
+<li>Пользователей (USER),</li>
+<li>Идентификации системы (имя хоста) (UTS).</li>
+</ul>
+<p>На примере PID namespaces, это означает что первый процесс, запущеный внутри независимой области видимости от основной, будет иметь номер 1, хотя в родительской области видимости такой процесс уже есть. Аналогично остальных случаях, процесс в контейнере будет иметь независимый от основной системы список сетевых интерфейсов, точек монтирования и так далее.</p>
+<p>Эти механизмы можно применять одновременно или по отдельности, в зависимости от задач. В контейнере можно запускать как один процесс, так и полноценную отдельную операционную систему, запуская процесс <code>init</code> (с оговоркой, что «гостевая» система будет использовать то же ядро, что и «хостовая») — так делает LXC, например — это одна из первых утилит контейнеризации, которые появились в линуксе 7 лет назад, в 2008 году.</p>
+<p>Самым популярным и модным решением контейнеризации сейчас является Docker, маркетинг которого настолько мощен что многие ассоциируют контейнеризацию с ним. Сразу оговорюсь, что в ІТ КПИ мы его не используем, так как нашли для себя более удобные и эффективные способы доставки и сборки, о которых поговорим ниже.</p>
+<h2 id="2-зачем-это">2. Зачем это?</h2>
+<blockquote>
+<p>Основное преимущество изолирования процесса — возможность композиции различных сервисов без неожиданных последствий.</p>
+</blockquote>
+<p>До недавнего времени контейнеры в основном рассматривали как легковесную замену виртуальным машинам — проекты LXC, OpenVZ этому подтверждение. Такая виртуализация не требует поддержки на уровне процессора, при этом потери производительности намного ниже за счет отсутствия необходимости в трате ресурсов на виртуализацию, ведь процессы запускаются в той же операционной системе. Тем не менее, необходимость запускать все системные процессы в гостевой ОС остается, что отражается на производительности.</p>
+<p>Последние несколько лет начали практиковать другой способ использования контейнеров: вместо запуска процесса init который тянет за собой запуск всех системных сервисов, запускается лишь целевой процесс. Таким образом мы достигаем нужного уровня изоляции процесса абсолютно без оверхеда по полному запуску гостевой операционной системы. Последний год контейнеры стали настолько популярными, что такой подход даже не причисляют к хипстерству :) Именно таким образом работает <a href="https://www.docker.com/what-docker">Docker</a>.</p>
+<p><em>Основное преимущество</em> изолирования процесса — возможность композиции различных сервисов без неожиданных последствий. Какие могут быть последствия — самый частый пример это использование разных версий библиотек которые идут зависимостями, или в переменных среды, разных операционных системах на компьютере разработчика и сервере, может на компьютере разработчика команда <code>python</code> запускает <code>python2.7</code>, но на сервере — <code>python3.5</code>? Все эти вещи не являются проблемой если разработчик запускает программу в абсолютно той же среде, в которой она будет работать на сервере (возможно с несколько другими настройками, но это уже управляемо).</p>
+<p><em>Второе преимущество</em> — управление сервисами. Контейнер, в отличии от пакетов системы, не «размазывается» по файловой системе, нет опасности что некоторые файлы пересекутся между сервисами, может быть легко перенесен на другой узел. При удалении контейнера не остается артефактов. Можно при необходимости запустить несколько копий сервиса.</p>
+<p><em>Третье</em> — моё любимое. С контейнерами основная система не засоряется, поэтому можно быть уверенным, что поведение системы всегда ожидаемо и такое как у свежеустановленной ОС.</p>
+<h2 id="3-немного-о-микросервисах">3. Немного о микросервисах</h2>
+<p>Если говорить о контейнерах, то часто их использование тесно связано с понятием микросервисов, хотя и не обязательно одно подразумевает другое. Микросервисная архитектура очень хорошо накладывается на контейнеры, сервис, помещенный в контейнер, позволяет производить масштабирование какого-либо микросервиса или воркера довольно легко, ведь достаточно скопировать контейнер и запустить на другой ноде.</p>
+<p>Отсутствие необходимости тестировать как разные сервисы ведут себя вместе на одной ноде, ведь они изолированы позволяет автоматизировать и абстрагировать масштабирование и контейнеризацию до уровня PaaS (Platform as a Service) — как <a href="http://mesos.apache.org/">Mesos</a>, <a href="http://kubernetes.io/">Kubernetes</a>, <a href="http://heroku.com/">Heroku</a>,  и так далее. Им нет необходимости знать что за приложение вы запускаете, какие библиотеки используете для того чтоб масштабировать и управлять кластером ваших сервисов [2].</p>
+<p>К недостаткам можно отнести усложнение инфраструктуры для сборки контейнеров и доставки их на сервер.</p>
+<h2 id="4-зачем-это-нам-в-іт-кпі">4. Зачем это нам в ІТ КПІ?</h2>
+<p>Во-первых, потому что это весело :)</p>
+<p>Этот <a href="http://itkpi.pp.ua/">блог</a> — лишь один видимый сервис из тех что мы используем чтоб вы могли читать статьи, получать <a href="https://goo.gl/MmXgXo">дайджесты событий</a> каждую неделю на свою почту а также <a href="http://itkpi.pp.ua/events/">просматривать их на сайте</a>.</p>
+<p>Чтоб приблизительно показать архитектуру наших сервисов, можете посмотреть на диаграмму:</p>
+<p><img src="/images/2016/02/1454836069_ad080454385d4fb4895e55f0129bfff2.png" alt="Диаграмма компонент сервисов ІТ КПІ"></p>
+<p>Как видите, только два сервиса — <a href="http://itkpi.pp.ua/">блог</a> и <a href="http://itkpi.pp.ua/events/">календарь событий</a>, видно вам, нашим пользователям, остальные являются внутренними для управления базой событий и создания дайджестов.</p>
+<p>Собственно, нам важны все преимущества описаные выше кроме масштабирования, потому что этот момент сейчас нам не нужен. Тем не менее, когда придет время мы сможем смасштабировать систему без проблем, что приятно осознавать.</p>
+<p>Наш способ деплоя вдохновлен тем как это делают в prom.ua. Мы не используеим lithos [3], собираем через Travis CI, ну и в целом способ изменен в сторону упрощения и с поправкой на то, что мы собираем open-source проекты и используем бесплатные тарифные планы у сервисов как github и travis. Рекомендую ознакомиться со статьей <a href="http://engineering.up.technology/author/paul/">Паши Коломийца</a> — <a href="http://engineering.up.technology/2016/01/29/rust-i-kontieiniery-v-prodakshienie/">Rust и контейнеры в продакшене</a> чтоб понять как это делается для крупного проекта.</p>
+<p>Статья в основном получилась теоретической, дальше уделим внимание подробнее на то как использовать контейнеры и как конкретно мы их используем на сайте. Пока что скажу только что для этого используется:</p>
+<ul>
+<li>
+<p><a href="http://vagga.readthedocs.org/">Vagga</a> — для запуске сервисов на стороне разработчика, отладки, а также для сборки контейнеров,</p>
+</li>
+<li>
+<p><a href="http://www.freedesktop.org/software/systemd/man/systemd-nspawn.html">systemd-nspawn</a> — используется для запуска контейнера на сервере,</p>
+</li>
+<li>
+<p><a href="http://www.ansible.com/">Ansible</a> — скрипты развертывания сервисов на сервере,</p>
+</li>
+<li>
+<p>Также используем <a href="http://travis-ci.org/">Travis CI</a> для сборки контейнеров.</p>
+</li>
+</ul>
+<p>Спасибо за то что дочитали до этого момента, надеюсь дальше разговор будет более предметный.</p>
+<p>[1] Man: Linux namespaces — <a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">http://man7.org/linux/man-pages/man7/namespaces.7.html</a></p>
+<p>[2] Heroku: Dynos and the Dyno Manager — <a href="https://devcenter.heroku.com/articles/dynos#isolation-and-security">https://devcenter.heroku.com/articles/dynos#isolation-and-security</a></p>
+<p>[3] Rust и контейнеры в продакшене — <a href="http://engineering.up.technology/2016/01/29/rust-i-kontieiniery-v-prodakshienie/">http://engineering.up.technology/2016/01/29/rust-i-kontieiniery-v-prodakshienie/</a></p>
+<p>Tags: containers, linux, devops, vagga, docker</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

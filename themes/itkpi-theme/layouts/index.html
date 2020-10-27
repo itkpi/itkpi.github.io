@@ -1,0 +1,59 @@
+{{ partial "header.html" . }}
+  <body
+    lang="{{ .Site.LanguageCode }}"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">{{ .Site.Title }}</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              <!-- pages -->
+              <!-- prettier-ignore -->
+              <ul id="taglist" class="taglist">
+              {{ range .Site.Params.menu }}
+              <li>
+                <a href="{{ .url }}">{{ .name }}</a>
+              </li>
+              <!-- prettier-ignore -->
+              {{ end }}
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="articles">
+          <!-- prettier-ignore -->
+          {{ range .Data.Pages.ByDate.Reverse }}
+
+          <a class="article-link" href="{{ .Permalink}}">
+              <article class="box is-link post">
+
+                  <header class="post-header">
+                      <h2 class="post-title">{{ .Title }}</h2>
+                  </header>
+                  <section class="post-excerpt">
+                      <p>{{ .Summary }}</p>
+                  </section>
+
+                  <footer class="post-meta">
+                      <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                      <span class="author">by <a href="mailto:{{ .Params.Email }}">{{ .Params.Author }}</a></span>
+                  </footer>
+              </article>
+          </a>
+          <!-- prettier-ignore -->
+          {{ end }}
+        </div>
+        {{ partial "sidebar.html" . }}
+      </main>
+
+    </section>
+  </div>
+    {{ partial "footer.html" . }}
+  </body>
+</html>

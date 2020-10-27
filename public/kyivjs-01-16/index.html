@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="uk-ua"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Summary по KyivJS 30.01.16" />
+<meta property="og:site_name" content="ІТ КПІ" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://itkpi.pp.ua/kyivjs-01-16/" />
+<meta property="og:locale" content="uk-ua" />
+<meta property="article:published_time" content="2016-01-30
+" /> <meta property="article:modified_time" content="2016-01-30
+" />
+
+
+
+
+
+
+    <title>Summary по KyivJS 30.01.16</title>
+    <link rel="canonical" href="https://itkpi.pp.ua/kyivjs-01-16/" />
+
+
+    <link rel="stylesheet" href="https://itkpi.pp.ua/css/screen.css" />
+<link rel="stylesheet" href="https://itkpi.pp.ua/css/style.css" />
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+
+  <body
+    lang="uk-ua"
+  >
+    <div id="body-wrapper">
+      <section id="main">
+        <header id="header">
+          <div class="blog-title">
+            <a href="/">ІТ КПІ</a>
+          </div>
+          <div class="taglist-wrapper clearfix">
+            <center>
+              
+              
+              <ul id="taglist" class="taglist">
+              
+              <li>
+                <a href="/about">ПРО НАС</a>
+              </li>
+              
+              
+              </ul>
+            </center>
+          </div>
+        </header>
+      </section>
+      <section id="main" class="mt5">
+      <main id="content" class="content clearfix" role="main">
+        <div id="article" class="box has-image">
+          <article class="post">
+            <header class="post-header">
+              <h2 class="post-title">Summary по KyivJS 30.01.16</h2>
+            </header>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-01-30">January 30, 2016</time>
+                <span class="author">by <a href="mailto:m.vlasov@post.com">MaxymVlasov</a></span>
+            </section>
+            <section class="post-content">
+              <div class="image-wrapper">
+    <img src="/images/2016/01/1454185312_7f0a9fcef3ae4daea571a153f54f27f7.jpeg" class="post-image full-img">
+</div>
+<p>Відвідали <a href="http://kyivjs.org.ua/">KyivJS</a>. Якщо коротко: було весело і цікаво)</p>
+<p>А саме, було 4 доповіді:</p>
+<ul>
+<li><a href="#brscalajs">Євгеній Сафронов: &ldquo;Scala.JS&rdquo;</a></li>
+<li><a href="#brjavascript">Павло Пономаренко: &ldquo;Плагіни для JavaScript ігор&rdquo;</a></li>
+<li><a href="#bres6classes">Олексій Швайка: &ldquo;ES6 Classes&rdquo;</a></li>
+<li><a href="#brangularbestpractices">Денис Зайченко: &ldquo;Angular best practices&rdquo;</a></li>
+</ul>
+<p>Дві бліц-доповіді:</p>
+<ul>
+<li><a href="#brpromisepipe">Роман Сенін: &ldquo;PromisePipe&rdquo;</a></li>
+<li><a href="#brvs">Олексій Распопов: &ldquo;Інженер vs Розробник&rdquo;</a></li>
+</ul>
+<p>І байки від <a href="https://twitter.com/listochkin">@listochkin</a>а в перервах :)</p>
+<br/>
+## Євгеній Сафронов:<br/>Scala.JS
+<p>Стара добра <a href="http://www.scala-lang.org/">Scala</a> тепер доступна і під <a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">JS</a>! <br/>
+Ще є версія під JVM, а версію під C# дропнули (:</p>
+<p>Спікер каже, що Scala — штука проста, порівняно з усілякими Haskell&rsquo;ями і ClojureScript&rsquo;ами</p>
+<blockquote>
+<p>«Ван Гог писав би на Scala, якби був живий»</p>
+</blockquote>
+<p><strong>Цікавий факт:</strong> понад 300 мов транспілюються у JavaScript.
+<img src="/images/2016/01/1454187386_efaaac511d7f4e31a64c1b4bb728141b.jpeg" alt="Євгеній Сафронов"></p>
+<p>З хорошого:</p>
+<ul>
+<li>Scala підтримується в IDEшках Intellij і Eclipse</li>
+<li>Вона, цитата: &ldquo;розширює свідомість&rdquo;</li>
+<li>Код написаний на <a href="http://www.scala-js.org/">Scala.JS</a> чудовий</li>
+</ul>
+<p>З поганого:</p>
+<ul>
+<li>Код, транспільований зі Scala.JS в звичайний JS — складний для зневадження</li>
+</ul>
+<p><img src="/images/2016/01/1454187699_4bae3320106e42069d1d95e97d222c6c.jpeg" alt="Стандартний приклад Scala.JS"></p>
+<p>Де варто використовувати:</p>
+<ul>
+<li>Single-page application</li>
+<li>Великі enterprise-застосунки, де важлива легкість у підтримці коду + довгий термін життя застосунку</li>
+<li>Ігри, де (дуже) багато коду</li>
+</ul>
+<p>Ось чому Scala краща  за Javascript:</p>
+<ul>
+<li><a href="https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4">Javascript Fatigue</a></li>
+<li><a href="http://wtfjs.com/">wtfjs.com</a></li>
+</ul>
+<p><img src="/images/2016/01/1454187919_5e540690bef94230832bf4e04714e6e8.jpeg" alt="WTF JS map ParseInt"></p>
+<p>Євгеній пропонує спробувати Scala.JS для фронтенду.</p>
+<p><strong>Питання:</strong> чи є компанії що юзають  Scala.JS на продакшні?<br/>
+Ні.</p>
+<p><strong>Безпека</strong><br/>
+ScalaJS безпечна, бо безпечний код зі скали транспілюється у  аналогічний на ES5, тому останній зламати через помилки у JS <span style="text-transform: uppercase">не вдасться</span>.</p>
+<p><strong>Підтримка <a href="https://facebook.github.io/react/">ReactJS</a></strong><br/>
+Зараз активно пилять бібліотеку для роботи з react</p>
+<p><strong>Робота з <a href="https://nodejs.org/en/">NodeJS</a></strong><br/>
+Я не пробував запускати на ноді, ніхто цього не робить. Проте, згідно документації, це можливо. (але навряд хтось перевіряв)</p>
+<p><strong>Корисні посилання:</strong></p>
+<ul>
+<li><a href="http://www.scala-js.org/">Сайт проекту</a></li>
+<li><a href="https://github.com/scala-js/scala-js">Github</a></li>
+<li><a href="https://gitter.im/scala-js/scala-js">Чат у Гіттері</a></li>
+<li>Євгеній Сафронов: <a href="https://github.com/javacodegeek">Github</a> | <a href="https://twitter.com/javacodegeek">Twitter</a></li>
+</ul>
+<br/>
+##  Павло Пономаренко:<br/>Плагіни для JavaScript ігор
+<blockquote>
+<p>«<a href="https://habrahabr.ru/users/TheShock/">Ця людина</a> — легенда frontend: єдина людина, яка писала на Хабр статті про JS у часи коли там цього більш ніхто не робив.»<br/>
+— © Лісточкін</p>
+</blockquote>
+<p><strong>Як писати плагіни?</strong></p>
+<ul>
+<li>Використання обмеженого API
+<ul>
+<li>Зміна картинок чи звуків</li>
+</ul>
+</li>
+<li>Підписка на події</li>
+<li>Агресивне втручання в код
+<ul>
+<li>Логіка на сервері</li>
+<li>Критичні частини (логін, донат) виносяться у окремі мікросервіси, недоступні для редагування</li>
+</ul>
+</li>
+</ul>
+<p>Турбота про користувачів, які пишуть плагіни, призвела до поліпшення якості коду в самому проекті.</p>
+<blockquote>
+<p>«Якщо десь можна було відправити невалідні данні так, щоб це зламало сервер — ці данні будуть відправлені.» — констатував <a href="https://github.com/theshock">Паша</a>.</p>
+</blockquote>
+<p>Зробити систему для написання плагінів — півсправи. А от як їх публікувати? Шляхом спроб і помилок команда Павла дійшла до практики використання <a href="https://gitlab.com/">GitLab</a>.</p>
+<p>Імхо, доповідь була найцікавішою, і якби я (<em>прим.:</em> Макс) не сидів з напіврозтуленим (в думках) ротом і раніше мав з чимось схожим справу, то записав би явно на порядок більше)</p>
+<p>Натомість, раджу переглянути <a href="http://slides.com/theshock/javascript-plugins">слайди презентації</a>, адже у них дуже багато цікавих моментів</p>
+<br/>
+## Олексій Швайка:<br/>ES6 Classes
+<p>Доповідь була англійською.<br/>
+Олексій розповідав про різницю між прототипами і класами в JS (спойлер — різниця у назві). Проте, реалізація класів відрізняється від реалізації функцій.</p>
+<blockquote>
+<p>«Second most popular code reuse technique — inheritance. First one — copy paste.»</p>
+</blockquote>
+<p><strong>Корисні посилання:</strong></p>
+<ul>
+<li><a href="https://github.com/shvaikalesh/extend-array/blob/master/extend-array.js">extend-array</a></li>
+<li>Олексій Швайка: <a href="https://github.com/shvaikalesh">Github</a> |  <a href="https://twitter.com/shvaikalesh">Twitter</a></li>
+</ul>
+<br/>
+## Денис Зайченко:<br/>Angular best practices
+<p>Всі замовники в Україні хочуть спеців на AngularJS, а всі розробники хочуть кодити на ReactJS, і таке неподобство триватиме.</p>
+<p>Передбачення від Лісточкіна: в Україну може прийти купа замовників на Angular 2. Справа в тому, що багато проектів в США написаних на Angular 1 не стали переходити на React, а вирішили почекати з рішенням на що переходити до виходу Angular 2.</p>
+<p><img src="/images/2016/01/1454201201_cef39b157ad042b182b9bed5163bfb5d.jpeg" alt="Денис Зайченко"></p>
+<p><strong>Корисні посилання:</strong></p>
+<ul>
+<li><a href="https://github.com/johnpapa/angular-styleguide">Angular Style Guide</a> by John Papa</li>
+<li>Денис Зайченко: <a href="https://github.com/MrZaYaC">Github</a> | <a href="https://twitter.com/MrZaYaC">Twitter</a></li>
+<li>Проект: <a href="https://github.com/MrZaYaC/angular-material-boilerplate">Angular Material Boilerplate</a></li>
+</ul>
+<br/>
+## Роман Сенін:<br/>PromisePipe
+<p>Рома розказав про крос-процесні гомогенні ланцюги Promise&rsquo;ів на прикладі бібліотеки <a href="https://github.com/edjafarov">Ельдара Джафарова</a>. Доповідь переросла у дискусію з того, як працює PromisePipe на клієнті та сервері, і механізми взаємодії останніх двох.</p>
+<p><img src="/images/2016/01/1454195188_f536e014ca814fe9b66a712d61d97585.jpeg" alt="Роман Сенін"></p>
+<p><strong>Корисні посилання:</strong></p>
+<ul>
+<li><a href="http://rastopyr.github.io/promise-pipe-kyivjs/">Презентація PromisePipe</a></li>
+<li><a href="https://github.com/edjafarov/PromisePipe">PromisePipe</a></li>
+<li>Роман Сенін: <a href="https://github.com/Rastopyr">Github</a> | <a href="https://twitter.com/rastopyr_ua">Twitter</a></li>
+</ul>
+<br/>
+## Олексій Распопов:<br/>Інженер vs Розробник
+<p>Стаття <a href="http://readwrite.com/2013/07/11/make-yourself-irrelevant-how-engineers-can-really-spur-innovation">Make Yourself Irrelevant</a> для справжніх інженерів і тих, хто пише код.</p>
+<p>Ознака інженера — доводити проект до кінця.<br/>
+Тому автор <a href="https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.txi1othsi">Javascript Fatigue</a> — слабак.</p>
+<p><strong>Корисні посилання:</strong></p>
+<ul>
+<li><a href="http://alexeyraspopov.github.io/engineer-vs-developer/#">Презентація</a></li>
+<li>Книга <a href="https://vk.com/doc96849502_437241501">Thinking, Fast and Slow</a> | <a href="https://vk.com/doc96849502_437241520">російською</a></li>
+<li>Олексій Распопов: <a href="https://github.com/alexeyraspopov">Github</a> | <a href="https://twitter.com/alexeyraspopov">Twitter</a></li>
+</ul>
+<br/>
+## Фан і офтоп
+Лісточкін розповідав, що в Скандинавії жебраки приймають пожертви  через термінали для кредитних карток :)
+<p><small></small></p>
+<blockquote>
+<p>«xxx: Ну, доклад по Angular вряд ли кому-то был бы интересен <br/>
+yyy: Я старовер — мне было интересно :)»</p>
+</blockquote>
+<p><small></small></p>
+<blockquote>
+<p>«John Papa — это спец по Ангуляру<br/>
+Papa John — это пицца»</p>
+</blockquote>
+<p><small></small></p>
+<blockquote>
+<p>«Рассказы о будущем ES7 на #kyivjs напоминают технический вариант сериала &ldquo;Санта-Барбара&rdquo; )»
+― © @jsunderhood via @chorna_kiwka</p>
+</blockquote>
+<p><small></small>
+Щодо толку, коли Лісточкін розповідав про Мінськ і те, що там нема чого їсти:</p>
+<blockquote>
+<p>«KyivJS — спонсор рассказов про драники»</p>
+</blockquote>
+<p><small></small></p>
+<blockquote>
+<p>«90% библиотек в мире фронтенда пишутся потому, что автор не осилил уже существующие решения.»</p>
+</blockquote>
+<p><a href="https://github.com/angular/angular-cli/search?utf8=%E2%9C%93&amp;q=ember">Ember в Angular-cli</a>
+<a href="https://github.com/angular/angular-cli/search?utf8=%E2%9C%93&amp;q=ember"><img src="/images/2016/01/1454196139_03a6c0b688544d7689ece1c00d239755.png" alt="Angular-cli"></a></p>
+<blockquote>
+<p>«Кстати, так мило, что у Babel проблема с миграцией с 5.x на 6.0. То есть, с 6to5v.5 to 6to5v.6»</p>
+</blockquote>
+<p>Підказка від Лісточкіна куди валити:</p>
+<blockquote>
+<p>«healthcare, government. Фінанси і так пів-України пилиль, а результату у грошовому еквіваленті не видно.</p>
+<p>&hellip;</p>
+<p>Валіть до Мінська, там скрізь дранніки і їсти більше нічого. Проте там сидять мільйонери з Viber.»</p>
+</blockquote>
+<p><em><strong>Співавтор: <a href="https://twitter.com/webknjaz">Святослав Сидоренко aka webknjaz</a></strong></em><br/>
+<em><sub>Добра частина інфи була взята з твіттера за хештеґом <a href="https://twitter.com/hashtag/KyivJS?src=itkpi">#kyivjs</a>.</sub><br/>
+<sup>Дякуємо усім, хто щось із ним постив.</sup></em></p>
+<p>Tags: JS, edu, kyivjs</p>
+
+            </section>
+          </article>
+        </div>
+        <div id="sidebar">
+    <div class="box sidebox about">
+        
+        <div class="sidebox box social clearfix">
+            <ul>
+                <a href="https://telegram.me/itkpi_bot" target="_blank" class="social-item telegram"
+                   onclick="ga('send', 'event', 'social', 'telegram');">
+                    <li><i class="fa fa-paper-plane-o fa-2x"></i></li>
+                </a>
+
+                <a href="https://www.facebook.com/newitkpi" target="_blank" class="social-item facebook"
+                   onclick="ga('send', 'event', 'social', 'facebook');">
+                    <li><i class="fa fa-facebook fa-2x"></i></li>
+                </a>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+      </main>
+
+    </section>
+  </div>
+    <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        IT KPI ©
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>
