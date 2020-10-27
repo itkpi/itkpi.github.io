@@ -5,6 +5,7 @@ theme = "itkpi-theme"
 enableEmoji = true
 copyright = "IT KPI ©"
 description = "IT KPI Blog"
+publishDir = "docs/"
 
 [markup.goldmark.renderer]
   unsafe= true
